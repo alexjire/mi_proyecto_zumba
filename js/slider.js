@@ -1,43 +1,32 @@
-let slides = document.querySelectorAll('.slide');
-let dots = document.querySelectorAll('.dot');
-let index = 0;
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
 
-// Pausar todos los videos
-function pauseAllVideos() {
-    slides.forEach(slide => {
-        let iframe = slide.querySelector('iframe');
-        let src = iframe.src;
-        iframe.src = src.replace('?autoplay=1',''); // pausa
-    });
+let currentIndex = 0;
+const INTERVAL = 90000; // 1:30 min
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+
+    const iframe = slide.querySelector("iframe");
+    iframe.src = i === index ? slide.dataset.video : "";
+  });
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === index);
+  });
+
+  currentIndex = index;
 }
 
-// Reproducir video activo
-function playVideo(slide) {
-    let iframe = slide.querySelector('iframe');
-    let src = slide.dataset.video;
-    iframe.src = src;
-}
-
-// Mostrar slide y actualizar dots
-function showSlide(i){
-    pauseAllVideos();
-    slides.forEach(s => s.classList.remove('active'));
-    dots.forEach(d => d.classList.remove('active'));
-    slides[i].classList.add('active');
-    dots[i].classList.add('active');
-    playVideo(slides[i]);
-    index = i;
-}
-
-// Dots clicables
 dots.forEach(dot => {
-    dot.addEventListener('click', ()=> showSlide(parseInt(dot.dataset.index)));
+  dot.addEventListener("click", () => {
+    showSlide(Number(dot.dataset.index));
+  });
 });
 
-// Autoplay cada 5s
-setInterval(()=>{
-    showSlide((index + 1) % slides.length);
-},5000);
+setInterval(() => {
+  showSlide((currentIndex + 1) % slides.length);
+}, INTERVAL);
 
-// Inicial
 showSlide(0);

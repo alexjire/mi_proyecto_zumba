@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zumba Lo Vía</title>
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+<header class="top-bar glass">
+  <h1>💃 Zumba Lo Vía</h1>
+  <button class="hamburger" id="hamburger">☰</button>
+</header>
+
+<!-- Menú móvil -->
+<nav class="mobile-menu" id="mobileMenu">
+  <button onclick="location.href='login.html'">Entrar</button>
+  <button onclick="location.href='registro.html'">Registrarse</button>
+  <button class="btn-membresia">Obten tu membresía</button>
+</nav>
+
+<main class="dashboard">
+
+  <!-- Botones desktop -->
+  <section class="panel-left">
+    <button class="btn-panel">Entrar</button>
+    <button class="btn-panel">Registrarse</button>
+    <button class="btn-panel btn-membresia">Obten tu membresía</button>
+  </section>
+
+  <!-- Carrusel -->
+  <section class="slider-container glass">
+
+    <div class="slider">
+
+      <div class="slide active" data-video="https://www.youtube.com/embed/-5Dxp1MF-IY?autoplay=1&mute=1">
+        <div class="video-container">
+          <iframe allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="slide" data-video="https://www.youtube.com/embed/c8_uMqn5Bxs?autoplay=1&mute=1">
+        <div class="video-container">
+          <iframe allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="slide" data-video="https://www.youtube.com/embed/vaNZY3bp1tQ?autoplay=1&mute=1">
+        <div class="video-container">
+          <iframe allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="dots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+    </div>
+
+  </section>
+
+  <!-- Comunicado -->
+  <aside class="panel-right glass">
+    <h3>📢 Comunicado</h3>
+    <p>Clase especial este viernes a las 7:00 pm. ¡No faltes!</p>
+  </aside>
+
+</main>
+
+<script src="js/menu.js"></script>
+<script src="js/slider.js"></script>
+</body>
+</html>
