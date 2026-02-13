@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+  background: linear-gradient(135deg, #4B2C6F, #3C3B8E);
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== GLASS ===== */
+.glass {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(15px);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* ===== HEADER ===== */
+.top-bar {
+  height: 60px;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-bar h1 {
+  font-size: 24px;
+}
+
+/* ===== HAMBURGUESA ===== */
+.hamburger {
+  display: none;
+  position: absolute;
+  right: 15px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: white;
+}
+
+/* ===== MENÚ MÓVIL ===== */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  gap: 10px;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu button {
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+  height: calc(100vh - 60px);
+  display: grid;
+  grid-template-columns: 200px 1fr 250px;
+  gap: 15px;
+  padding: 15px;
+  align-items: start;
+}
+
+/* ===== PANEL LEFT ===== */
+.panel-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-panel {
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  cursor: pointer;
+}
+
+.btn-membresia {
+  background: rgba(255,255,255,0.35);
+  font-weight: bold;
+}
+
+/* ===== SLIDER ===== */
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* 🔑 asegura proporción exacta del video */
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* 🔑 ocupa todo el espacio del slider */
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Video */
+.video-container {
+  width: 100%;
+  height: 100%; /* 🔑 llena el slider */
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ===== DOTS ===== */
+.dots {
+  margin-top: 10px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: white;
+}
+
+/* ===== PANEL RIGHT ===== */
+.panel-right {
+  padding: 15px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .panel-left {
+    display: none;
+  }
+
+  .panel-right {
+    order: 2;
+  }
+
+  .slider-container {
+    order: 1;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .video-container {
+    max-width: 720px;
+  }
+}
+
+/* ===== VIDEO MÁS GRANDE EN PC/TABLET ===== */
+@media (min-width: 900px) {
+  .video-container {
+    max-width: 100%;
+  }
+}
