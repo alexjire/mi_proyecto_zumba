@@ -1,20 +1,21 @@
-// login.js
+// login.js (actualizado)
 const loginForm = document.getElementById("loginForm");
 
 loginForm.addEventListener("submit", (e) => {
-  e.preventDefault(); // Evita que la página se recargue
+  e.preventDefault();
 
   const usuario = document.getElementById("usuario").value.trim();
   const password = document.getElementById("password").value.trim();
 
-  // Aquí defines un usuario de prueba
-  const usuarioValido = "admin";
-  const passwordValido = "1234";
+  // Por ahora validamos con localStorage
+  const storedUser = JSON.parse(localStorage.getItem("users")) || [];
+  const userExists = storedUser.find(u => u.usuario === usuario && u.password === password);
 
-  if(usuario === usuarioValido && password === passwordValido) {
-    alert("¡Bienvenido al dashboard!");
-    // Redirige al dashboard (tu index.html)
-    window.location.href = "index.html";
+  if(userExists) {
+    // Guardar sesión
+    localStorage.setItem("currentUser", JSON.stringify(userExists));
+    alert("¡Login exitoso!");
+    window.location.href = "dashboard.html";
   } else {
     alert("Usuario o contraseña incorrectos");
   }

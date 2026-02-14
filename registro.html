@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro Zumba Lo Vía</title>
+  <link rel="stylesheet" href="/css/registro.css">
+</head>
+<body>
+
+  <div class="register-container glass">
+    <h2>Registro</h2>
+    <div class="register-icon">
+  <img src="img/register_icon.png" alt="Registro" class="icon-large">
+</div>
+
+    <form id="registerForm">
+      <!-- Nombre completo -->
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+
+      <!-- Correo electrónico -->
+      <label for="correo">Correo electrónico</label>
+      <input type="email" id="correo" name="correo" placeholder="tu@correo.com" required>
+
+      <!-- Usuario -->
+      <label for="usuario">Usuario</label>
+      <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario" required>
+
+      <!-- Contraseña -->
+      <label for="password">Contraseña</label>
+      <div class="password-wrapper">
+        <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+        <img src="img/eye_icon.png" alt="Mostrar contraseña" id="togglePassword" class="eye">
+      </div>
+
+      <!-- Confirmar contraseña -->
+      <label for="confirmPassword">Confirmar contraseña</label>
+      <div class="password-wrapper">
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirma tu contraseña" required>
+        <img src="img/eye_icon.png" alt="Mostrar contraseña" id="toggleConfirmPassword" class="eye">
+      </div>
+
+      <!-- Botón -->
+      <button type="submit">Registrarse</button>
+    </form>
+
+    <p>¿Ya tienes cuenta? <a href="login.html">Entrar</a></p>
+  </div>
+
+  <script src="js/register.js"></script>
+</body>
+</html>

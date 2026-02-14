@@ -1,0 +1,142 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+  background: linear-gradient(135deg, #4B2C6F, #3C3B8E);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== CONTENEDOR REGISTRO ===== */
+.register-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px 25px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* ===== TITULO ===== */
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+/* ===== LABEL ===== */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+/* ===== INPUTS ===== */
+input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 16px;
+  border-radius: 25px;
+  border: none;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 14px;
+}
+
+/* ===== BOTONES ===== */
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  background: rgba(255,255,255,0.35);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: rgba(255,255,255,0.5);
+}
+
+/* ===== ENLACES ===== */
+p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+p a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* ===== ICONOS INPUT ===== */
+.icon {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* ===== PASSWORD WRAPPER ===== */
+.password-wrapper {
+  position: relative;
+  display: flex;           /* 🔑 flex para alinear verticalmente */
+  align-items: center;     /* 🔑 centra input y ojo */
+}
+
+.password-wrapper input {
+  flex: 1;
+  padding-right: 40px;     /* espacio para el ojo */
+  height: 45px;
+  border-radius: 25px;
+  border: none;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 14px;
+}
+
+.password-wrapper .eye {
+  position: absolute;      /* mantiene al ojo encima del input */
+  right: 12px;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%); /* 🔑 centra verticalmente */
+}
+
+/* Icono grande debajo del título */
+.register-icon {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.register-icon .icon-large {
+  width: 60px;  /* puedes ajustar el tamaño */
+  height: 60px;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 500px) {
+  .register-container {
+    padding: 20px;
+  }
+
+  input, button {
+    font-size: 13px;
+  }
+}
