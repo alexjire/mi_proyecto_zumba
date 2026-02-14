@@ -1,3 +1,4 @@
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -9,27 +10,25 @@
 body {
   background: linear-gradient(135deg, #4B2C6F, #3C3B8E);
   color: white;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 /* ===== GLASS ===== */
 .glass {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(15px);
   border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 10px;
 }
 
 /* ===== HEADER ===== */
 .top-bar {
   height: 60px;
-  padding: 10px;
-  text-align: center;
-  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .top-bar h1 {
@@ -54,7 +53,7 @@ body {
   top: 60px;
   left: 0;
   right: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(10px);
   padding: 15px;
   gap: 10px;
@@ -74,15 +73,13 @@ body {
 
 /* ===== DASHBOARD ===== */
 .dashboard {
-  height: calc(100vh - 60px);
   display: grid;
-  grid-template-columns: 200px 1fr 250px;
+  grid-template-columns: 200px 1fr;
   gap: 15px;
   padding: 15px;
-  align-items: start;
 }
 
-/* ===== PANEL LEFT ===== */
+/* ===== PANEL LATERAL ===== */
 .panel-left {
   display: flex;
   flex-direction: column;
@@ -93,120 +90,99 @@ body {
   padding: 12px;
   border-radius: 25px;
   border: none;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   color: white;
   cursor: pointer;
-}
-
-.btn-membresia {
-  background: rgba(255,255,255,0.35);
-  font-weight: bold;
-}
-
-/* ===== SLIDER ===== */
-.slider-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  gap: 8px;
+}
+
+.btn-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* ===== SECCIONES DE CONTENIDO ===== */
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
+
+.comunicado-urgente {
+  margin-bottom: 20px;
+}
+
+/* ===== CARRUSELES ===== */
+.carruseles-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.carousel-section {
+  flex: 1;
+  min-width: 300px;
   padding: 10px;
-  margin: 0;
-  width: 100%;
-  height: auto;
 }
 
-.slider {
+.carousel {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-}
-
-.slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.slide.active {
-  opacity: 1;
-  z-index: 1;
-}
-
-/* Video */
-.video-container {
-  width: 100%;
-  height: 100%;
-  border-radius: 18px;
   overflow: hidden;
+  height: 250px;
+  border-radius: 15px;
 }
 
-.video-container iframe {
+.carousel-container {
+  display: flex;
+  transition: transform 0.8s ease;
   width: 100%;
   height: 100%;
-  border: none;
 }
 
-/* ===== DOTS ===== */
-.dots {
-  margin-top: 10px;
+.carousel-container img,
+.carousel-container iframe {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 15px;
 }
 
-.dot {
-  height: 12px;
-  width: 12px;
-  margin: 0 5px;
-  background: rgba(255,255,255,0.4);
-  border-radius: 50%;
-  display: inline-block;
+/* CUADRITOS DE POSICIÓN */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.carousel-dot {
+  width: 16px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
+  border-radius: 4px;
 }
 
-.dot.active {
+.carousel-dot.active {
   background: white;
-}
-
-/* ===== PANEL RIGHT ===== */
-.panel-right {
-  padding: 15px;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .dashboard {
     grid-template-columns: 1fr;
-    align-items: start;
-  }
-
-  .panel-left {
-    display: none;
-  }
-
-  .slider-container {
-    order: 1;
-  }
-
-  .panel-right {
-    order: 2;          /* 🔑 debajo del video */
-    margin-top: 15px;  /* 🔑 espacio justo debajo del carrusel */
-    position: relative; /* 🔑 se mantiene en el flujo normal */
   }
 
   .hamburger {
     display: block;
   }
 
-  .video-container {
-    max-width: 720px;
-  }
-}
-
-/* ===== VIDEO MÁS GRANDE EN PC/TABLET ===== */
-@media (min-width: 900px) {
-  .video-container {
-    max-width: 100%;
+  .carousel {
+    height: 200px;
   }
 }

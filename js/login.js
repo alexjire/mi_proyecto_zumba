@@ -1,22 +1,34 @@
-// login.js (actualizado)
-const loginForm = document.getElementById("loginForm");
+// login.js
+document.addEventListener("DOMContentLoaded", () => {
 
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+  // Mostrar / ocultar contraseña
+  const passwordInput = document.getElementById("password");
+  const togglePassword = document.getElementById("togglePassword");
 
-  const usuario = document.getElementById("usuario").value.trim();
-  const password = document.getElementById("password").value.trim();
+  togglePassword.addEventListener("click", () => {
+    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+    passwordInput.setAttribute("type", type);
+  });
 
-  // Por ahora validamos con localStorage
-  const storedUser = JSON.parse(localStorage.getItem("users")) || [];
-  const userExists = storedUser.find(u => u.usuario === usuario && u.password === password);
+  // Login
+  const loginForm = document.getElementById("loginForm");
 
-  if(userExists) {
-    // Guardar sesión
-    localStorage.setItem("currentUser", JSON.stringify(userExists));
-    alert("¡Login exitoso!");
-    window.location.href = "dashboard.html";
-  } else {
-    alert("Usuario o contraseña incorrectos");
-  }
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const usuario = document.getElementById("usuario").value.trim();
+    const password = passwordInput.value.trim();
+
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const userExists = storedUsers.find(u => u.usuario === usuario && u.password === password);
+
+    if(userExists) {
+      localStorage.setItem("currentUser", JSON.stringify(userExists));
+      alert("¡Login exitoso!");
+      window.location.href = "index.html";  // 🔑 Cambiado a index.html
+    } else {
+      alert("Usuario o contraseña incorrectos");
+    }
+  });
+
 });

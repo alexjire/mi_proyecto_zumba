@@ -1,38 +1,52 @@
 // register.js
-const registerForm = document.getElementById("registerForm");
+document.addEventListener("DOMContentLoaded", () => {
 
-// Inputs y ojitos
-const togglePassword = document.getElementById("togglePassword");
-const passwordInput = document.getElementById("password");
+  // Mostrar / ocultar contraseña
+  const passwordInput = document.getElementById("password");
+  const togglePassword = document.getElementById("togglePassword");
 
-const toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
-const confirmPasswordInput = document.getElementById("confirmPassword");
+  const confirmInput = document.getElementById("confirmPassword");
+  const toggleConfirm = document.getElementById("toggleConfirmPassword");
 
-// Mostrar / ocultar contraseña principal
-togglePassword.addEventListener("click", () => {
-  const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
-  passwordInput.setAttribute("type", type);
-});
+  togglePassword.addEventListener("click", () => {
+    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+    passwordInput.setAttribute("type", type);
+  });
 
-// Mostrar / ocultar confirmación
-toggleConfirmPassword.addEventListener("click", () => {
-  const type = confirmPasswordInput.getAttribute("type") === "password" ? "text" : "password";
-  confirmPasswordInput.setAttribute("type", type);
-});
+  toggleConfirm.addEventListener("click", () => {
+    const type = confirmInput.getAttribute("type") === "password" ? "text" : "password";
+    confirmInput.setAttribute("type", type);
+  });
 
-// Validar formulario
-registerForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+  // Registro
+  const registerForm = document.getElementById("registerForm");
 
-  const password = passwordInput.value.trim();
-  const confirmPassword = confirmPasswordInput.value.trim();
+  registerForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  if(password !== confirmPassword) {
-    alert("Las contraseñas no coinciden");
-    return;
-  }
+    const usuario = document.getElementById("usuario").value.trim();
+    const password = passwordInput.value.trim();
+    const confirmPassword = confirmInput.value.trim();
 
-  // Por ahora solo alert
-  alert("¡Registro exitoso! Ahora puedes entrar");
-  window.location.href = "login.html";
+    if(password !== confirmPassword) {
+      alert("Las contraseñas no coinciden");
+      return;
+    }
+
+    // Guardar usuario en localStorage
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Evitar usuario duplicado
+    if(storedUsers.find(u => u.usuario === usuario)) {
+      alert("El usuario ya existe");
+      return;
+    }
+
+    storedUsers.push({ usuario, password });
+    localStorage.setItem("users", JSON.stringify(storedUsers));
+
+    alert("¡Registro exitoso! Ahora puedes entrar");
+    window.location.href = "login.html";
+  });
+
 });
