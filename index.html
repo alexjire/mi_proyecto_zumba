@@ -6,6 +6,7 @@
 <title>Zumba Lo Vía</title>
 <link rel="stylesheet" href="css/dashboard.css">
 </head>
+
 <body>
 
 <header class="top-bar glass">
@@ -61,6 +62,7 @@
 
   <!-- Contenido central -->
   <section class="content-section active" id="inicio">
+    <h2>🏠 Inicio</h2>
 
     <div class="comunicado-urgente glass">
       <h3>📢 Comunicado urgente</h3>
@@ -68,59 +70,107 @@
     </div>
 
     <div class="carruseles-container">
+
       <!-- IMÁGENES -->
       <div class="carousel-section glass">
         <h3>Imágenes</h3>
-        <div class="carousel" id="carousel-images">
+        <div class="carousel">
           <div class="carousel-container">
             <img src="img/zumba.avif" alt="Imagen 1">
             <img src="img/zumba1.avif" alt="Imagen 2">
+            <img src="img/zumba2.jpg" alt="Imagen 3">
           </div>
-          <div class="carousel-dots"></div>
+          <div class="carousel-dots">
+            <div class="carousel-dot active" data-index="0"></div>
+            <div class="carousel-dot" data-index="1"></div>
+            <div class="carousel-dot" data-index="2"></div>
+          </div>
         </div>
       </div>
 
       <!-- VIDEOS -->
       <div class="carousel-section glass">
         <h3>Videos</h3>
-        <div class="carousel" id="carousel-videos">
+        <div class="carousel">
           <div class="carousel-container">
-            <iframe src="https://www.youtube.com/embed/ElM9u9nS50Y" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            <iframe src="https://www.youtube.com/embed/1fVoMCIVbdw" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/ElM9u9nS50Y?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/1fVoMCIVbdw?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
-          <div class="carousel-dots"></div>
+          <div class="carousel-dots">
+            <div class="carousel-dot active" data-index="0"></div>
+            <div class="carousel-dot" data-index="1"></div>
+          </div>
         </div>
       </div>
 
       <!-- OTROS ANUNCIOS -->
       <div class="carousel-section glass">
         <h3>Otros anuncios</h3>
-        <div class="carousel" id="carousel-anuncios">
+        <div class="carousel">
           <div class="carousel-container">
-            <img src="img/zumba2.jpg" alt="Anuncio 1">
-            <img src="img/zumba3.PNG" alt="Anuncio 2">
+            <img src="img/zumba3.PNG" alt="Imagen 4">
+            <img src="img/zumba4.avif" alt="Imagen 5">
           </div>
-          <div class="carousel-dots"></div>
+          <div class="carousel-dots">
+            <div class="carousel-dot active" data-index="0"></div>
+            <div class="carousel-dot" data-index="1"></div>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </section>
 
-  <!-- Otras secciones ocultas -->
-  <section class="content-section" id="clases"></section>
-  <section class="content-section" id="noticias"></section>
-  <section class="content-section" id="eventos"></section>
-  <section class="content-section" id="contacto"></section>
-  <section class="content-section" id="ubicacion"></section>
-  <section class="content-section" id="membresia"></section>
-  <section class="content-section" id="idioma"></section>
-  <section class="content-section" id="perfil"></section>
-  <section class="content-section admin-section" id="admin"></section>
+  <!-- Otras secciones -->
+  <section class="content-section" id="clases">
+    <h2>Clases</h2>
+    <p>Aquí verás tus clases disponibles.</p>
+  </section>
+
+  <section class="content-section" id="noticias">
+    <h2>Noticias / Comunicados</h2>
+    <p>Aquí irán los comunicados del instructor.</p>
+  </section>
+
+  <section class="content-section" id="eventos">
+    <h2>Eventos / Carrusel</h2>
+    <p>Próximos eventos aquí.</p>
+  </section>
+
+  <section class="content-section" id="contacto">
+    <h2>Contacto</h2>
+    <p>Formulario o información del instructor.</p>
+  </section>
+
+  <section class="content-section" id="ubicacion">
+    <h2>Ubicación</h2>
+    <p>Mapa embebido con la ubicación de las clases.</p>
+  </section>
+
+  <section class="content-section" id="membresia">
+    <h2>Membresía</h2>
+    <p>Planes disponibles y opción de pago.</p>
+  </section>
+
+  <section class="content-section" id="idioma">
+    <h2>Idioma</h2>
+    <p>Selector de idioma.</p>
+  </section>
+
+  <section class="content-section" id="perfil">
+    <h2>Perfil</h2>
+    <p>Información del usuario y configuración.</p>
+  </section>
+
+  <section class="content-section admin-section" id="admin">
+    <h2>Panel Admin</h2>
+    <p>Agregar noticias, eventos, clases y comunicados urgentes.</p>
+  </section>
 
 </main>
 
 <script src="js/menu.js"></script>
 <script src="js/dashboard.js"></script>
+<script src="js/carrusel.js"></script>
 </body>
 </html>

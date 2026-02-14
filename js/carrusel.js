@@ -1,49 +1,36 @@
-function crearCarrusel(contenedorSelector, intervalTime = 60000) {
-  const contenedor = document.querySelector(contenedorSelector);
-  if (!contenedor) return;
+document.querySelectorAll('.carousel').forEach(carousel => {
+  const container = carousel.querySelector('.carousel-container');
+  const dots = carousel.querySelectorAll('.carousel-dot');
+  const total = container.children.length;
+  let index = 0;
 
-  const items = Array.from(contenedor.children);
+  function showSlide(i) {
+    container.style.transform = `translateX(-${i * 100}%)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[i].classList.add('active');
 
-  let dotsContainer = contenedor.parentElement.querySelector('.carousel-dots');
-  if (!dotsContainer) {
-    dotsContainer = document.createElement('div');
-    dotsContainer.classList.add('carousel-dots');
-    contenedor.parentElement.appendChild(dotsContainer);
+    // reproducir video automáticamente si es iframe
+    const child = container.children[i];
+    if (child.tagName === 'IFRAME') {
+      child.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+    }
+
+    index = i;
   }
 
-  items.forEach((item, index) => {
-    const dot = document.createElement('span');
-    dot.classList.add('dot');
-    if (index === 0) dot.classList.add('active');
-    dot.dataset.index = index;
-    dotsContainer.appendChild(dot);
-
+  // click en cuadritos
+  dots.forEach(dot => {
     dot.addEventListener('click', () => {
-      currentIndex = index;
-      contenedor.scrollLeft = currentIndex * (items[0].offsetWidth + 10);
-      actualizarDots();
+      showSlide(parseInt(dot.dataset.index));
     });
   });
 
-  let currentIndex = 0;
-
-  function actualizarDots() {
-    const dots = dotsContainer.querySelectorAll('.dot');
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-  }
-
+  // cambiar automáticamente cada 60 segundos
   setInterval(() => {
-    currentIndex = (currentIndex + 1) % items.length;
-    contenedor.scrollLeft = currentIndex * (items[0].offsetWidth + 10);
-    actualizarDots();
-  }, intervalTime);
+    let next = (index + 1) % total;
+    showSlide(next);
+  }, 60000);
 
-  window.addEventListener('resize', () => {
-    contenedor.scrollLeft = currentIndex * (items[0].offsetWidth + 10);
-  });
-}
-
-// Inicializar carruseles
-crearCarrusel('#inicio .inicio-columns .col:nth-child(1) .contenido'); // Imágenes
-crearCarrusel('#inicio .inicio-columns .col:nth-child(2) .contenido'); // Videos
-crearCarrusel('#inicio .inicio-columns .col:nth-child(3) .contenido'); // Otros anuncios
+  // inicial
+  showSlide(0);
+});

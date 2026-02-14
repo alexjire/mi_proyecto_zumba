@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Instructor - Zumba Lo Vía</title>
+<link rel="stylesheet" href="css/master_dashboard.css">
+</head>
+<body>
+
+<header class="top-bar glass">
+  <h1>💃 Zumba Lo Vía - Instructor</h1>
+  <button class="hamburger" id="hamburger">☰</button>
+</header>
+
+<!-- Menú móvil -->
+<nav class="mobile-menu" id="mobileMenu">
+  <button class="btn-panel" id="logout-btn">
+    <img src="img/salir_icon.png" class="btn-icon"> Salir
+  </button>
+</nav>
+
+<main class="dashboard">
+
+  <!-- Panel lateral -->
+  <section class="panel-left glass">
+    <button class="btn-panel menu-btn" data-section="noticias-section">
+      <img src="img/noticias_icon.png" class="btn-icon"> Noticias
+    </button>
+    <button class="btn-panel menu-btn" data-section="agregar-noticia-section">
+      <img src="img/evento_icon.png" class="btn-icon"> Agregar Noticia
+    </button>
+    <button class="btn-panel menu-btn" data-section="carrusel-section">
+      <img src="img/clase_icon.png" class="btn-icon"> Carrusel
+    </button>
+    <button class="btn-panel menu-btn" data-section="comunicado-section">
+      <img src="img/contacto_icon.png" class="btn-icon"> Comunicado Urgente
+    </button>
+    <button class="btn-panel" id="logout-btn-2">
+      <img src="img/salir_icon.png" class="btn-icon"> Salir
+    </button>
+  </section>
+
+  <!-- Secciones -->
+  <section class="content-section glass" id="noticias-section">
+    <h2>📢 Noticias / Comunicados</h2>
+    <ul id="listaNoticias"></ul>
+  </section>
+
+  <section class="content-section glass" id="agregar-noticia-section">
+    <h2>➕ Agregar Noticia</h2>
+    <form id="noticiaForm">
+      <textarea id="noticiaTexto" placeholder="Escribe tu noticia aquí..." required></textarea>
+      <button type="submit">Agregar</button>
+    </form>
+  </section>
+
+  <section class="content-section glass" id="carrusel-section">
+    <h2>➕ Agregar Imagen o Video al Carrusel</h2>
+    <form id="carruselForm">
+      <input type="file" id="carruselImagen" accept="image/*">
+      <input type="text" id="carruselVideo" placeholder="Link del video (YouTube)">
+      <button type="submit">Agregar</button>
+    </form>
+  </section>
+
+  <section class="content-section glass" id="comunicado-section">
+    <h2>📢 Comunicado Urgente</h2>
+    <ul id="comunicadoContainer"></ul>
+    <form id="comunicadoForm">
+      <textarea id="comunicadoTexto" placeholder="Escribe el comunicado urgente aquí..."></textarea>
+      <button type="submit">Guardar</button>
+    </form>
+  </section>
+
+</main>
+
+<script src="js/master_dashboard.js"></script>
+</body>
+</html>

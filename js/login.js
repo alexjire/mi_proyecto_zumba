@@ -1,34 +1,34 @@
-// login.js
-document.addEventListener("DOMContentLoaded", () => {
+// Capturamos el formulario
+const loginForm = document.getElementById("loginForm");
 
-  // Mostrar / ocultar contraseña
-  const passwordInput = document.getElementById("password");
-  const togglePassword = document.getElementById("togglePassword");
-
-  togglePassword.addEventListener("click", () => {
-    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
-    passwordInput.setAttribute("type", type);
-  });
-
-  // Login
-  const loginForm = document.getElementById("loginForm");
-
+if (loginForm) {
   loginForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Evita recargar la página
 
-    const usuario = document.getElementById("usuario").value.trim();
-    const password = passwordInput.value.trim();
+    // Obtenemos los valores
+    const username = document.getElementById("usuario").value;
+    const password = document.getElementById("password").value;
 
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-    const userExists = storedUsers.find(u => u.usuario === usuario && u.password === password);
-
-    if(userExists) {
-      localStorage.setItem("currentUser", JSON.stringify(userExists));
-      alert("¡Login exitoso!");
-      window.location.href = "index.html";  // 🔑 Cambiado a index.html
+    // Validación simulada
+    if (username === "master" && password === "master123") {
+      localStorage.setItem("user", JSON.stringify({ username, isMaster: true }));
+      alert("Has iniciado sesión como MASTER");
     } else {
-      alert("Usuario o contraseña incorrectos");
+      localStorage.setItem("user", JSON.stringify({ username, isMaster: false }));
+      alert("Has iniciado sesión como usuario normal");
     }
-  });
 
-});
+    // Redirige al dashboard
+    window.location.href = "index.html";
+  });
+}
+
+// Mostrar/ocultar contraseña
+const togglePassword = document.getElementById("togglePassword");
+if (togglePassword) {
+  const passwordInput = document.getElementById("password");
+  togglePassword.addEventListener("click", () => {
+    const type = passwordInput.type === "password" ? "text" : "password";
+    passwordInput.type = type;
+  });
+}

@@ -1,63 +1,86 @@
-// ===== MENÚ LATERAL =====
-const menuButtons = document.querySelectorAll(".menu-btn");
-const contentSections = document.querySelectorAll(".content-section");
-menuButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    contentSections.forEach(sec => sec.classList.remove("active"));
-    const target = document.getElementById(btn.dataset.section);
-    if(target) target.classList.add("active");
-  });
-});
+document.addEventListener("DOMContentLoaded", () => {
 
-// ===== HAMBURGUESA =====
-const hamburger = document.getElementById("hamburger");
-const mobileMenu = document.getElementById("mobileMenu");
-hamburger.addEventListener("click", () => mobileMenu.classList.toggle("open"));
+  // ===== LEER USUARIO LOGUEADO =====
+  let currentUser = null;
+  const storedUser = localStorage.getItem("user");
+  if (storedUser) currentUser = JSON.parse(storedUser);
 
-// ===== CARRUSELES =====
-class Carousel {
-  constructor(id, interval = 60000) { // 1 min
-    this.carousel = document.getElementById(id);
-    this.container = this.carousel.querySelector(".carousel-container");
-    this.items = this.container.children;
-    this.dotsContainer = this.carousel.querySelector(".carousel-dots");
-    this.currentIndex = 0;
-    this.interval = interval;
-    this.initDots();
-    this.start();
-  }
+  // ===== ELEMENTOS =====
+  const menuButtons = document.querySelectorAll(".menu-btn");
+  const contentSections = document.querySelectorAll(".content-section");
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const adminBtn = document.getElementById("admin-btn");
+  const logoutBtn = document.getElementById("logout-btn");
+  const comunicadoUrgente = document.querySelector(".comunicado-urgente");
+  const inicioSection = document.getElementById("inicio");
 
-  initDots() {
-    this.dotsContainer.innerHTML = "";
-    Array.from(this.items).forEach((item, i) => {
-      const dot = document.createElement("div");
-      dot.classList.add("carousel-dot");
-      if (i === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => this.showSlide(i));
-      this.dotsContainer.appendChild(dot);
+  // ===== MENÚ LATERAL =====
+  menuButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      contentSections.forEach(sec => sec.classList.remove("active"));
+      const target = document.getElementById(btn.dataset.section);
+      if (target) target.classList.add("active");
     });
-    this.dots = this.dotsContainer.querySelectorAll(".carousel-dot");
+  });
+
+  // ===== HAMBURGUESA =====
+  if (hamburger) {
+    hamburger.addEventListener("click", () => mobileMenu.classList.toggle("open"));
   }
 
-  showSlide(index) {
-    this.currentIndex = index;
-    const offset = -index * 100;
-    this.container.style.transform = `translateX(${offset}%)`;
-    this.dots.forEach(dot => dot.classList.remove("active"));
-    this.dots[index].classList.add("active");
+  // ===== PANEL ADMIN =====
+  if (adminBtn) {
+    if (currentUser?.isMaster) {
+      adminBtn.style.display = "flex"; // mostrar solo para master
+      adminBtn.addEventListener("click", () => {
+        window.location.href = "master_dashboard.html"; // abrir dashboard master
+      });
+    } else {
+      adminBtn.style.display = "none"; // ocultar para usuarios normales
+    }
   }
 
-  nextSlide() {
-    this.currentIndex = (this.currentIndex + 1) % this.items.length;
-    this.showSlide(this.currentIndex);
+  // ===== CERRAR SESIÓN =====
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    });
   }
 
-  start() {
-    this.timer = setInterval(() => this.nextSlide(), this.interval);
+  // ===== NOTICIAS =====
+// ===== NOTICIAS =====
+const noticias = JSON.parse(localStorage.getItem("noticias")) || [];
+
+// Función para renderizar noticias en la sección Noticias
+function renderNoticias() {
+  const noticiasSection = document.getElementById("noticias");
+  noticiasSection.innerHTML = "<h2>Noticias / Comunicados</h2>"; // limpiar sección
+  if (noticias.length > 0) {
+    noticias.forEach(n => {
+      const p = document.createElement("p");
+      p.textContent = n;
+      noticiasSection.appendChild(p);
+    });
+  } else {
+    const p = document.createElement("p");
+    p.textContent = "Aquí irán los comunicados del instructor.";
+    noticiasSection.appendChild(p);
   }
 }
+renderNoticias();
 
-// Inicializar carruseles
-new Carousel("carousel-images", 60000);
-new Carousel("carousel-videos", 60000);
-new Carousel("carousel-anuncios", 60000);
+  // ===== COMUNICADO URGENTE =====
+  const comunicado = localStorage.getItem("comunicado") || "";
+  if (comunicadoUrgente) {
+    const p = comunicadoUrgente.querySelector("p");
+    if (comunicado && comunicado.trim() !== "") {
+      comunicadoUrgente.style.display = "block";
+      p.textContent = comunicado;
+    } else {
+      comunicadoUrgente.style.display = "none";
+    }
+  }
+
+});
