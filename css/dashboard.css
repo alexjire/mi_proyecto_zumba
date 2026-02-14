@@ -178,6 +178,135 @@ body {
 .carousel-dot.active {
   background: white;
 }
+/* ===== FORMULARIO DE CONTACTO ===== */
+.contact-form {
+  background: rgba(255, 255, 255, 0.1); /* vidrio transparente */
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin-top: 15px;
+}
+
+/* Inputs y textarea */
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1rem;
+  width: 100%;
+  resize: none; /* evita que textarea se redimensione */
+}
+
+/* Botón enviar */
+.contact-form button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(0, 200, 100, 0.8);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: rgba(0, 200, 100, 1);
+  transform: scale(1.05);
+}
+
+/* Mensaje de confirmación */
+.contact-feedback {
+  margin-top: 10px;
+  color: #0f0;
+  font-weight: bold;
+  font-size: 1rem;
+}
+/* ===== FORMULARIO DE CONTACTO ===== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1); /* vidrio */
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  max-width: 400px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.contact-form label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 14px;
+  resize: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #00ff7f; /* verde claro al enfocar */
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.contact-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #00ff7f;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #00e36f;
+  transform: scale(1.05);
+}
+
+
+/* RESPONSIVE - Adaptar a móviles */
+@media (max-width: 600px) {
+  .contact-form {
+    padding: 15px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.9rem;
+  }
+
+  .contact-form button {
+    font-size: 0.9rem;
+  }
+}
+
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {

@@ -52,12 +52,14 @@
     <button class="btn-panel menu-btn" data-section="perfil">
       <img src="img/perfil_icon.png" class="btn-icon"> Perfil
     </button>
+    <button class="btn-panel menu-btn admin-btn" id="admin-btn">
+      Panel Administrador
+    </button>
     <button class="btn-panel" id="logout-btn">
       <img src="img/salir_icon.png" class="btn-icon"> Salir
     </button>
-    <button class="btn-panel menu-btn admin-btn" data-section="admin">
-      Panel Admin
-    </button>
+    
+
   </section>
 
   <!-- Contenido central -->
@@ -138,9 +140,26 @@
   </section>
 
   <section class="content-section" id="contacto">
-    <h2>Contacto</h2>
-    <p>Formulario o información del instructor.</p>
-  </section>
+  <h2>Contacto</h2>
+  <form id="contactForm" class="contact-form glass">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" placeholder="Tu correo" required>
+    
+    <label for="telefono">Teléfono:</label>
+    <input type="telefono" id="telefono" name="telefono" placeholder="Tu telefono" required>
+
+    <label for="mensaje">Mensaje:</label>
+    <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <div id="contactFeedback" class="contact-feedback"></div>
+</section>
+
 
   <section class="content-section" id="ubicacion">
     <h2>Ubicación</h2>

@@ -84,3 +84,33 @@ renderNoticias();
   }
 
 });
+// ===== FORMULARIO DE CONTACTO =====
+const contactForm = document.getElementById("contactForm");
+const contactFeedback = document.getElementById("contactFeedback");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+
+    if (!nombre || !email || !mensaje) return;
+
+    // Guardar en localStorage (simula envío)
+    let contactos = JSON.parse(localStorage.getItem("contactos")) || [];
+    contactos.push({ nombre, email, mensaje, fecha: new Date().toLocaleString() });
+    localStorage.setItem("contactos", JSON.stringify(contactos));
+
+    // Mensaje de confirmación
+    contactFeedback.textContent = "✅ Mensaje enviado correctamente. Gracias por comunicarte.";
+    contactForm.reset();
+
+    // Opcional: eliminar mensaje después de 5 segundos
+    setTimeout(() => {
+      contactFeedback.textContent = "";
+    }, 5000);
+  });
+}
+
